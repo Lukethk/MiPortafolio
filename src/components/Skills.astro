@@ -1,0 +1,95 @@
+---
+import type { IconType } from 'react-icons';
+import { FaHtml5, FaJs, FaReact, FaVuejs, FaNodeJs, FaPython, FaDatabase, FaGitAlt, FaDocker, FaAws } from 'react-icons/fa';
+import { SiFigma } from 'react-icons/si';
+import Icon from './Icon';
+
+interface Skill {
+  name: string;
+  level: number;
+  icon: IconType;
+}
+
+interface SkillCategory {
+  [key: string]: Skill[];
+}
+
+const skills: SkillCategory = {
+  "Desarrollo Frontend": [
+    { name: "HTML/CSS", level: 90, icon: FaHtml5 },
+    { name: "JavaScript", level: 85, icon: FaJs },
+    { name: "React", level: 80, icon: FaReact },
+    { name: "Vue.js", level: 75, icon: FaVuejs }
+  ],
+  "Desarrollo Backend": [
+    { name: "Node.js", level: 85, icon: FaNodeJs },
+    { name: "Python", level: 80, icon: FaPython },
+    { name: "SQL", level: 75, icon: FaDatabase },
+    { name: "MongoDB", level: 70, icon: FaDatabase }
+  ],
+  "Herramientas": [
+    { name: "Git", level: 85, icon: FaGitAlt },
+    { name: "Docker", level: 70, icon: FaDocker },
+    { name: "AWS", level: 65, icon: FaAws },
+    { name: "Figma", level: 80, icon: SiFigma }
+  ]
+};
+---
+
+<section id="skills" class="min-h-screen flex items-center justify-center py-20 relative">
+  <div class="container mx-auto px-4">
+    <h2 class="text-5xl font-bold text-center mb-16 text-white">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-300 to-accent-300 animate-gradient">
+        Mis Habilidades
+      </span>
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {Object.entries(skills).map(([category, items]) => (
+        <div class="backdrop-blur-lg bg-white/5 p-8 rounded-2xl border border-white/10 hover:border-primary-500/50 transition-all duration-300">
+          <h3 class="text-2xl font-bold text-primary-200 mb-8">{category}</h3>
+          <div class="space-y-6">
+            {items.map(skill => (
+              <div class="group">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center gap-2">
+                    <Icon icon={skill.icon} className="w-5 h-5 text-accent-400 group-hover:text-accent-300 transition-colors" />
+                    <span class="text-primary-100 group-hover:text-primary-50 transition-colors">{skill.name}</span>
+                  </div>
+                  <span class="text-accent-300 group-hover:text-accent-200 transition-colors">{skill.level}%</span>
+                </div>
+                <div class="relative h-2 bg-primary-900/50 rounded-full overflow-hidden">
+                  <div
+                    class="absolute top-0 left-0 h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-500 group-hover:scale-x-105"
+                    style={`width: ${skill.level}%`}
+                  >
+                    <div class="absolute inset-0 bg-gradient-shine bg-[length:10px_10px] animate-shine"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-primary-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-1/3 left-1/4 w-64 h-64 bg-accent-500/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+</section>
+
+<style>
+  @keyframes shine {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shine {
+    animation: shine 2s linear infinite;
+  }
+</style> 

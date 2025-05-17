@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Página no encontrada">
+  <div class="min-h-screen flex items-center justify-center bg-gradient-to-b from-purple-100 to-white px-4">
+    <div class="text-center">
+      <h1 class="text-9xl font-bold text-purple-600 animate-bounce-soft mb-4">404</h1>
+      <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-fade-in">¡Oops! Página no encontrada</h2>
+      <p class="text-xl text-gray-600 mb-8 animate-fade-in-delay">
+        Parece que te has perdido en el espacio digital.
+      </p>
+      <a 
+        href="/" 
+        class="inline-block bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition-all hover:scale-105 animate-fade-in-delay-2"
+      >
+        Volver al inicio
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @keyframes bounceSoft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .animate-bounce-soft {
+    animation: bounceSoft 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+</style> 

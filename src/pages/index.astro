@@ -1,16 +1,54 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Navbar from '../components/Navbar.astro';
+import IconCarousel from '../components/IconCarousel.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Lucas | Desarrollador Frontend">
+	<main class="relative min-h-screen bg-gradient-to-br from-primary-900 via-accent-900 to-primary-900">
+		<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.15),transparent_50%)]"></div>
+		<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(217,70,239,0.15),transparent_50%)]"></div>
+		<div class="absolute inset-0 bg-gradient-shine bg-[length:20px_20px] opacity-5"></div>
+		<div class="relative z-10">
+			<Navbar />
+			<Hero />
+			<IconCarousel />
+			<About />
+			<Projects />
+			<Skills />
+		</div>
+	</main>
+</Layout>
+
+<style>
+	:root {
+		--pattern-size: 20px;
+		--pattern-color: rgba(255, 255, 255, 0.03);
+	}
+
+	main {
+		scroll-behavior: smooth;
+		background-attachment: fixed;
+	}
+
+	:global(.dark) main {
+		color-scheme: dark;
+	}
+
+	@keyframes shine {
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: var(--pattern-size) var(--pattern-size);
+		}
+	}
+
+	.bg-gradient-shine {
+		animation: shine 4s linear infinite;
+	}
+</style>

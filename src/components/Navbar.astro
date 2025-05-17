@@ -1,0 +1,47 @@
+---
+import { FaHome, FaUser, FaCode, FaTools } from 'react-icons/fa';
+
+const navItems = [
+  { name: 'Inicio', href: '#home', icon: FaHome },
+  { name: 'Sobre Mí', href: '#about', icon: FaUser },
+  { name: 'Proyectos', href: '#projects', icon: FaCode },
+  { name: 'Habilidades', href: '#skills', icon: FaTools },
+];
+---
+
+<nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+  <div class="backdrop-blur-lg bg-white/10 rounded-full border border-white/20 p-2">
+    <ul class="flex items-center gap-2">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="flex items-center gap-2 px-4 py-2 rounded-full text-white/70 hover:text-white transition-colors relative group"
+          >
+            <span class="relative">
+              {item.name}
+              <span class="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-accent-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity -z-10"></span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    animation: slideDown 0.5s ease-out forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translate(-50%, -100%);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+</style>
