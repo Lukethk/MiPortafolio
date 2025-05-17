@@ -40,24 +40,24 @@ const tools: Tool[] = [
 ];
 ---
 
-<div class="w-full overflow-hidden py-12 bg-gradient-to-r from-primary-900/50 via-accent-900/50 to-primary-900/50 backdrop-blur-sm">
-  <h3 class="text-center text-2xl font-bold text-primary-200 mb-8">
+<div class="w-full overflow-hidden py-8 sm:py-12 bg-gradient-to-r from-primary-900/50 via-accent-900/50 to-primary-900/50 backdrop-blur-sm">
+  <h3 class="text-center text-xl sm:text-2xl font-bold text-primary-200 mb-6 sm:mb-8">
     Tecnologías que uso
   </h3>
   
   <div class="relative w-full">
     <!-- Gradient overlays -->
-    <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-primary-900 to-transparent z-10"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-primary-900 to-transparent z-10"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-primary-900 to-transparent z-10"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-primary-900 to-transparent z-10"></div>
     
     <!-- Carousel -->
-    <div class="flex space-x-8 animate-scroll group">
+    <div class="flex space-x-4 sm:space-x-8 animate-scroll group">
       {[...tools, ...tools].map((tool, index) => (
-        <div class="flex flex-col items-center justify-center min-w-[80px] sm:min-w-[100px] gap-2 transition-all duration-300">
-          <div class={`p-3 sm:p-4 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 hover:border-white/20 ${tool.color} group-hover:[animation-play-state:paused]`}>
-            <Icon icon={tool.icon} className="w-6 h-6 sm:w-8 sm:h-8" client:load />
+        <div class="flex flex-col items-center justify-center min-w-[70px] sm:min-w-[100px] gap-2 transition-all duration-300">
+          <div class={`p-2.5 sm:p-4 rounded-lg sm:rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 hover:border-white/20 ${tool.color} group-hover:[animation-play-state:paused]`}>
+            <Icon icon={tool.icon} className="w-5 h-5 sm:w-8 sm:h-8" client:load />
           </div>
-          <span class="text-[10px] sm:text-xs text-primary-200 opacity-80 group-hover:opacity-100 transition-opacity">{tool.name}</span>
+          <span class="text-[9px] sm:text-xs text-primary-200 opacity-80 group-hover:opacity-100 transition-opacity">{tool.name}</span>
         </div>
       ))}
     </div>
@@ -82,9 +82,22 @@ const tools: Tool[] = [
     animation-play-state: paused;
   }
 
+  /* Ajustes de velocidad de animación por tamaño de pantalla */
   @media (max-width: 640px) {
     .animate-scroll {
-      animation-duration: 45s;
+      animation-duration: 30s; /* Más rápido en móviles */
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .animate-scroll {
+      animation-duration: 45s; /* Velocidad media en tablets */
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .animate-scroll {
+      animation-duration: 60s; /* Más lento en escritorio */
     }
   }
 </style>
